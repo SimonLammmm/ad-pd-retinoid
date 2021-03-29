@@ -12,6 +12,12 @@ Lam S et al, 2021, "Systems analysis reveals ageing-related perturbations in ret
 
 This repository contains supporting computer codes and author-curated files used in the original research study.
 
+Refer to the following files for specific analyses:  
+- [analysis.ipynb][1] - network analyses. Run with [the conda environment][2]
+
 ## License
 
 All original computer code and author-curated data files have been released under a [Creative Commons Attribution ShareAlike 4.0 International Licence](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[1]: ./code/analysis.ipynb
+[2]: ./environment_network_analysis.yaml
