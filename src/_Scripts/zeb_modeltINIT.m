@@ -12,8 +12,6 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LEGAL %%%%
 %
-% Copyright © 2020 King's College London
-%
 % This work is licensed under the Creative Commons Attribution 4.0 International Licence. To view
 % a copy of this license,  visit http://creativecommons.org/licences/by/4.0/  or send a letter to
 % Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -140,7 +138,7 @@ end
 %% Simulate the models
 
 for i = 1:nClust
-    
+
     % Constraints
     mod(i).model = mod(i).modeltemp;
     mod(i).model = changeRxnBounds(mod(i).model, 'EX_gln_L_e',0.013,'l');

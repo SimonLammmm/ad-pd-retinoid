@@ -12,8 +12,6 @@
 #
 ###################################################################################### LEGAL ####
 #
-# Copyright © 2020 King's College London
-#
 # This work is licensed under the Creative Commons Attribution 4.0 International Licence. To view
 # a copy of this license,  visit http://creativecommons.org/licences/by/4.0/  or send a letter to
 # Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -179,20 +177,20 @@ dds <- DESeq(dds)
 a <- 4
 
 for (b in 1:(a-1)) {
-    
+
     res <- results(dds,
                    contrast = c("Cluster", b, a))
-    
-    
+
+
     resData <- see(res)
-    
+
     # Volcano plot
-    
+
     resData <- resData %>%
         mutate(colour = case_when(abs(l2fc) < user_l2fc_thresh | padj > user_alpha ~ "grey",
                                   abs(l2fc) >= user_l2fc_thresh & padj <= user_alpha ~ "red")) %>%
         arrange(padj)
-    
+
     ggplot(data = resData,
            mapping = aes(x = l2fc, y = padj, colour = colour, alpha = colour)) +
         geom_point() +
@@ -216,15 +214,15 @@ for (b in 1:(a-1)) {
              x = "Log 2 fold change",
              y = "Adjusted p value")
     ggsave(paste0(outdir, "DESeq2_c", b, "_vs_c", a, ".png"), device = "png")
-    
-    
+
+
     # Significant DEGs
-    
+
     resData_sig <- resData %>%
         filter(colour == "red")
-    
+
     # Save to file
-    
+
     fwrite(x = resData,
            file = paste0(outdir,
                          "allDEG_c",
@@ -233,7 +231,7 @@ for (b in 1:(a-1)) {
                          a,
                          ".tsv"),
            sep = "\t")
-    
+
     fwrite(x = resData_sig,
            file = paste0(outdir,
                          "sigDEG_c",
@@ -242,5 +240,5 @@ for (b in 1:(a-1)) {
                          a,
                          ".tsv"),
            sep = "\t")
-    
+
 }
